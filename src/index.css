@@ -40,13 +40,23 @@ body{
   background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.85) 0%,rgba(235,205,255,.6) 30%,rgba(195,215,255,.5) 70%,rgba(254,215,225,.65) 95%,rgba(255,255,255,.3) 100%);
   box-shadow:0 12px 32px rgba(186,197,244,.35);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
+  animation:bubble-breath 3.5s ease-in-out infinite;
+}
+@keyframes bubble-breath{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.03)}
 }
 .b-n{font-size:21px;font-weight:700;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.08)}
 .b-i{font-size:13px;font-weight:500;color:rgba(255,255,255,.95);margin-top:4px}
 .deco{position:absolute;border-radius:50%;pointer-events:none}
-.deco-1{left:30px;top:30px;width:28px;height:28px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.7),rgba(235,205,255,.3));opacity:.7}
-.deco-2{right:25px;top:50px;width:20px;height:20px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.6),rgba(195,215,255,.3));opacity:.6}
-.deco-3{right:40px;bottom:20px;width:32px;height:32px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.6),rgba(254,215,225,.4));opacity:.5}
+.deco-1{left:30px;top:30px;width:28px;height:28px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.7),rgba(235,205,255,.3));opacity:.7;animation:bubble-float 4.5s ease-in-out infinite}
+.deco-2{right:25px;top:50px;width:20px;height:20px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.6),rgba(195,215,255,.3));opacity:.6;animation:bubble-float 4s ease-in-out .3s infinite}
+.deco-3{right:40px;bottom:20px;width:32px;height:32px;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.6),rgba(254,215,225,.4));opacity:.5;animation:bubble-float 5s ease-in-out .6s infinite}
+@keyframes bubble-float{
+  0%,100%{transform:translateY(0) translateX(0)}
+  30%{transform:translateY(-6px) translateX(3px)}
+  60%{transform:translateY(4px) translateX(-2px)}
+}
 
 /* ===== 按钮 ===== */
 .btn-pill{
