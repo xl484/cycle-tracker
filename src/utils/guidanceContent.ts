@@ -1,161 +1,104 @@
 import type { CyclePhase, GuidanceItem } from '../types/cycle';
 
-// 四阶段四维度的建议内容（基于 PRD 循证文案）
 const contentMap: Record<Exclude<CyclePhase, 'unknown'>, GuidanceItem[]> = {
   menstrual: [
     {
-      id: 'men-energy',
-      category: 'energy',
-      icon: '⚡',
-      title: '精力状态',
-      content: '雌激素和孕酮处于低点，可能感到乏力、腰酸。血量流失会消耗铁质，建议多补充红肉、菠菜等高铁食物。注意多休息，顺应身体的低速节奏。',
-    },
-    {
-      id: 'men-exercise',
-      category: 'exercise',
-      icon: '🧘',
+      id: 'men-exercise', category: 'exercise', icon: '🧘',
       title: '运动建议',
-      content: '避免剧烈运动和高强度训练。推荐散步、轻柔瑜伽、拉伸等温和活动，可缓解经痛和肌肉紧张。热敷腹部也有助于舒缓不适。',
+      content: '避免剧烈运动和高强度训练。推荐散步、轻柔瑜伽、拉伸等温和活动，可缓解经痛和肌肉紧张。热敷腹部有助于舒缓不适。',
     },
     {
-      id: 'men-work',
-      category: 'work',
-      icon: '💼',
-      title: '工作节奏',
-      content: '适当放慢工作节奏，避免熬夜和重体力活。可将重要决策推迟到精力回升后。短暂午休能有效补充体力。',
-    },
-    {
-      id: 'men-diet',
-      category: 'diet',
-      icon: '🍲',
+      id: 'men-diet', category: 'diet', icon: '🍲',
       title: '饮食建议',
-      content: '多饮温水，补充高蛋白食物如汤类、豆制品。适量摄入黑巧克力可缓解不适。避免生冷食物和过量咖啡因。',
+      content: '多饮温水，补充高蛋白食物如汤类、豆制品。适量摄入黑巧克力可缓解不适。避免生冷食物和过量咖啡因。血量流失消耗铁质，多吃红肉、菠菜。',
+    },
+    {
+      id: 'men-sleep', category: 'sleep', icon: '😴',
+      title: '睡眠建议',
+      content: '经期疲劳感较强，建议比平时早睡30-60分钟。睡前热敷腹部或泡脚有助入睡。如经痛影响睡眠，可尝试侧卧屈膝姿势缓解。',
+    },
+    {
+      id: 'men-mood', category: 'mood', icon: '🌸',
+      title: '情绪关怀',
+      content: '雌激素和孕酮处于低点，情绪可能偏低或敏感。接纳这个节奏，减少社交压力，给自己安静的独处时光。写日记或听舒缓音乐有帮助。',
     },
   ],
   follicular: [
     {
-      id: 'fol-energy',
-      category: 'energy',
-      icon: '⚡',
-      title: '精力状态',
-      content: '雌激素稳步回升，精力逐渐恢复，心情更加愉悦。这是你整个周期中体能和情绪的上升期，自信心和动力都在增强。',
-    },
-    {
-      id: 'fol-exercise',
-      category: 'exercise',
-      icon: '🏃',
+      id: 'fol-exercise', category: 'exercise', icon: '🏃',
       title: '运动建议',
       content: '利用这段高能量窗口加强锻炼！适合力量训练、有氧运动、跑步等中高强度运动。研究显示此阶段运动表现和力量可达峰值。',
     },
     {
-      id: 'fol-work',
-      category: 'work',
-      icon: '💼',
-      title: '工作节奏',
-      content: '头脑清晰、精力充沛，适合安排高难度任务、重要会议和需要创造力的工作。抓住这个效率高峰时段推进大项目。',
-    },
-    {
-      id: 'fol-diet',
-      category: 'diet',
-      icon: '🥗',
+      id: 'fol-diet', category: 'diet', icon: '🥗',
       title: '饮食建议',
       content: '保持均衡营养，多摄入优质蛋白和复合碳水支持体能需求。新鲜蔬菜和水果有助维持上升期的身体代谢。',
+    },
+    {
+      id: 'fol-sleep', category: 'sleep', icon: '😴',
+      title: '睡眠建议',
+      content: '精力回升期睡眠质量通常较好。保持规律作息，早晨适当晒太阳有助于维持生物钟稳定。运动后充分拉伸可提升深度睡眠。',
+    },
+    {
+      id: 'fol-mood', category: 'mood', icon: '☀️',
+      title: '情绪关怀',
+      content: '雌激素回升带来积极情绪和自信。这是社交、开启新项目的好时机。利用这份动力去推进之前搁置的计划。',
     },
   ],
   ovulation: [
     {
-      id: 'ovu-energy',
-      category: 'energy',
-      icon: '⚡',
-      title: '精力状态',
-      content: '雌激素达到峰值，精力和注意力集中度都很高。社交欲望和自信心增强，体温可能略有升高。是身体状态最佳的时间点之一。',
-    },
-    {
-      id: 'ovu-exercise',
-      category: 'exercise',
-      icon: '🔥',
+      id: 'ovu-exercise', category: 'exercise', icon: '🔥',
       title: '运动建议',
       content: '体能处于高峰，可以挑战高强度间歇训练（HIIT）、冲刺跑、大重量训练。注意保持充分热身和补水，留意可能的轻微排卵腹痛。',
     },
     {
-      id: 'ovu-work',
-      category: 'work',
-      icon: '💼',
-      title: '工作节奏',
-      content: '思维敏捷、表达力强，适合完成重要决策、公开演讲或需要创意的项目。利用这段沟通高峰期建立人脉和推进合作。',
-    },
-    {
-      id: 'ovu-diet',
-      category: 'diet',
-      icon: '🥑',
+      id: 'ovu-diet', category: 'diet', icon: '🥑',
       title: '饮食建议',
       content: '补充足量水分（体温略高时需水量增加）。摄入富含抗氧化物和健康脂肪的食物如牛油果、坚果，支持高峰代谢。',
+    },
+    {
+      id: 'ovu-sleep', category: 'sleep', icon: '😴',
+      title: '睡眠建议',
+      content: '能量高峰可能导致晚睡冲动，但保持7-8小时睡眠很重要。睡前减少屏幕时间，可以尝试冥想帮助放松。',
+    },
+    {
+      id: 'ovu-mood', category: 'mood', icon: '🌼',
+      title: '情绪关怀',
+      content: '雌激素峰值带来社交自信和表达欲。适合安排重要沟通、公开演讲。享受这段状态最好的时光，记录下让你开心的事。',
     },
   ],
   luteal: [
     {
-      id: 'lut-energy',
-      category: 'energy',
-      icon: '⚡',
-      title: '精力状态',
-      content: '孕酮升高可能导致疲惫感、情绪波动和腹胀。临近经期前一周 PMS 症状常见：乳房胀痛、失眠、焦虑。这是身体提醒你放慢的信号。',
-    },
-    {
-      id: 'lut-exercise',
-      category: 'exercise',
-      icon: '🚶',
+      id: 'lut-exercise', category: 'exercise', icon: '🚶',
       title: '运动建议',
-      content: '适度降低运动强度，但不要完全停止。快走、瑜伽、普拉提和轻度有氧能有效缓解 PMS 情绪波动。运动释放的内啡肽是天然的安慰剂。',
+      content: '适度降低运动强度但不要完全停止。快走、瑜伽、普拉提和轻度有氧能有效缓解 PMS 情绪波动。运动释放的内啡肽是天然的情绪稳定剂。',
     },
     {
-      id: 'lut-work',
-      category: 'work',
-      icon: '💼',
-      title: '工作节奏',
-      content: '避免高压工作连续作战。可安排复盘、整理、规划等相对轻松的任务。给自己留出缓冲时间，避免在疲劳时做重大决策。',
-    },
-    {
-      id: 'lut-diet',
-      category: 'diet',
-      icon: '🍫',
+      id: 'lut-diet', category: 'diet', icon: '🍫',
       title: '饮食建议',
-      content: '控制甜食和精碳水摄入，避免血糖骤升骤降加重疲惫。可少量摄入黑巧克力。增加镁含量丰富的食物（坚果、深绿蔬菜）有助缓解情绪波动。',
+      content: '控制甜食和精碳水摄入，避免血糖骤升骤降加重疲惫。可少量摄入黑巧克力。增加镁含量食物（坚果、深绿蔬菜）有助缓解情绪波动。',
+    },
+    {
+      id: 'lut-sleep', category: 'sleep', icon: '😴',
+      title: '睡眠建议',
+      content: '孕酮升高可能影响睡眠质量。睡前避免咖啡因和酒精，尝试薰衣草精油或温热牛奶。如果半夜醒来，不要看手机，深呼吸帮助重新入睡。',
+    },
+    {
+      id: 'lut-mood', category: 'mood', icon: '🍃',
+      title: '情绪关怀',
+      content: 'PMS 可能带来焦虑、易怒或低落。允许自己有情绪波动，不必苛责。减少不必要的压力源，安排整理和复盘类工作更舒适。',
     },
   ],
 };
 
-const fallbackContent: GuidanceItem[] = [
-  {
-    id: 'fb-energy',
-    category: 'energy',
-    icon: '⚡',
-    title: '精力状态',
-    content: '请先设置你的周期数据，我们将为你提供个性化的每日建议。',
-  },
-  {
-    id: 'fb-exercise',
-    category: 'exercise',
-    icon: '🧘',
-    title: '运动建议',
-    content: '记录你的经期开始日期和平均周期长度，即可获取适合当前阶段的运动指导。',
-  },
-  {
-    id: 'fb-work',
-    category: 'work',
-    icon: '💼',
-    title: '工作节奏',
-    content: '了解自己的周期阶段，有助于更科学地安排工作和休息。',
-  },
-  {
-    id: 'fb-diet',
-    category: 'diet',
-    icon: '🍲',
-    title: '饮食建议',
-    content: '不同阶段身体需求不同，合理的饮食搭配能帮助你更舒适地度过每个时期。',
-  },
+const fallback: GuidanceItem[] = [
+  { id:'fb-exercise', category:'exercise', icon:'🏃', title:'运动建议', content:'记录经期数据后，获取适合当前阶段的运动指导。' },
+  { id:'fb-diet', category:'diet', icon:'🥗', title:'饮食建议', content:'不同阶段身体需求不同，合理饮食帮你更舒适地度过每个时期。' },
+  { id:'fb-sleep', category:'sleep', icon:'😴', title:'睡眠建议', content:'周期各阶段对睡眠影响不同，科学调整作息提升休息质量。' },
+  { id:'fb-mood', category:'mood', icon:'🌸', title:'情绪关怀', content:'了解荷尔蒙波动对情绪的影响，学会与自己的身体节奏共处。' },
 ];
 
 export function getGuidance(phase: CyclePhase): GuidanceItem[] {
-  if (phase === 'unknown') return fallbackContent;
+  if (phase === 'unknown') return fallback;
   return contentMap[phase];
 }
