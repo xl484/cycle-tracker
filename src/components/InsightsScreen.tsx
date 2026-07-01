@@ -11,7 +11,7 @@ const Face=({mood,energy}:{mood:number;energy?:number})=>{const c=MC[mood]??'#6B
 function gp(d:number,cl:number,pl:number):string{if(d<=0||d>cl)return'unknown';const fe=cl-LUT;if(d<=pl)return'menstrual';if(d<=fe)return'follicular';if(d===fe+1)return'ovulation';return'luteal';}
 
 const MOODS=[{k:3,label:'开心',icon:Smile,c:'#af90e8'},{k:2,label:'平静',icon:Smile,c:'#8da6f9'},{k:1,label:'疲惫',icon:Meh,c:'#84c9b9'},{k:-1,label:'焦虑',icon:(props:any)=><svg width={props.size||16} height={props.size||16} viewBox="0 0 24 24" fill="none" stroke={props.color||'currentColor'} strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r="1" fill={props.color||'currentColor'} stroke="none"/><circle cx="15" cy="10" r="1" fill={props.color||'currentColor'} stroke="none"/><circle cx="12" cy="16" r="2.5"/></svg>,c:'#f5bc8c'},{k:0,label:'低落',icon:Frown,c:'#f584a7'}];
-const SPORTS=[{id:'yoga',label:'瑜伽',icon:Leaf},{id:'run',label:'跑步',icon:PersonStanding},{id:'strength',label:'力量训练',icon:Dumbbell},{id:'walk',label:'散步',icon:Activity},{id:'tennis',label:'网球',icon:Activity},{id:'hike',label:'爬山',icon:Mountain}];
+const SPORTS=[{id:'yoga',label:'瑜伽',icon:Leaf},{id:'run',label:'跑步',icon:PersonStanding},{id:'strength',label:'力量训练',icon:Dumbbell},{id:'walk',label:'散步',icon:PersonStanding},{id:'tennis',label:'网球',icon:(props:any)=><svg width={props.size||11} height={props.size||11} viewBox="0 0 24 24" fill="none" stroke={props.color||'currentColor'} strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="7"/><path d="M6 7q6 3 12 0 M6 17q6-3 12 0"/></svg>},{id:'hike',label:'爬山',icon:Mountain}];
 
 export default function InsightsScreen({onBack}:{onBack:()=>void}){
   const{phaseInfo,cycleData,saveCycleData}=useCycleContext();
@@ -31,7 +31,7 @@ export default function InsightsScreen({onBack}:{onBack:()=>void}){
 
   const allSports=[...SPORTS,...customSports];
   const toggleSport=(id:string)=>{setSelSports(prev=>prev.includes(id)?prev.filter(s=>s!==id):[...prev,id]);};
-  const handleAdd=()=>{if(addText.trim()){const id=`c_${Date.now()}`;setCustomSports(prev=>[...prev,{id,label:addText.trim()}]);setSelSports(prev=>[...prev,id]);setAddText('');setShowAdd(false);}};
+  const handleAdd=()=>{if(addText.trim()){const id=`c_${Date.now()}`;setCustomSports(prev=>[...prev,{id,label:addText.trim(),icon:Activity}]);setSelSports(prev=>[...prev,id]);setAddText('');setShowAdd(false);}};
   const getSportLabel=(id:string)=>allSports.find(s=>s.id===id)?.label||'';
   const handleSave=()=>{const sportLabels=selSports.map(getSportLabel).filter(Boolean);setToday({mood:selMood,energy,sports:sportLabels});setSaved(true);setTimeout(()=>setSaved(false),2000);};
 

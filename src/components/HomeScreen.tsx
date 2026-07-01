@@ -35,7 +35,7 @@ export default function HomeScreen({onNav,goTips}:{onNav:(t:Tab)=>void;goTips:(c
       {/* Gemini 3D 泡泡 */}
       <div style={{display:'flex',justifyContent:'center',padding:'20px 0 8px',position:'relative'}}>
         <div className="deco deco-1"/><div className="deco deco-2"/><div className="deco deco-3"/>
-        <div onClick={()=>onNav('tips')} style={{cursor:'pointer',width:220,height:220,borderRadius:'50%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,
+        <div onClick={()=>goTips()} style={{cursor:'pointer',width:220,height:220,borderRadius:'50%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,
           background:'radial-gradient(circle at 35% 35%,rgba(255,255,255,.88) 0%,rgba(235,205,255,.55) 28%,rgba(195,215,255,.45) 65%,rgba(254,215,225,.6) 92%,rgba(255,255,255,.25) 100%)',
           boxShadow:'0 16px 44px rgba(186,197,244,.35)',transition:'transform .3s'}}>
           <div style={{fontSize:32,fontWeight:700,color:'#fff',textShadow:'0 2px 6px rgba(0,0,0,.06)'}}>{ph.l}</div>
@@ -54,10 +54,10 @@ export default function HomeScreen({onNav,goTips}:{onNav:(t:Tab)=>void;goTips:(c
           border:'1px solid rgba(255,255,255,.5)',borderTop:'1px solid rgba(255,255,255,.6)',
           boxShadow:'0 6px 24px rgba(100,100,150,.07),inset 0 1px 0 rgba(255,255,255,.4)'}}>
           {[
-            {icon:<Activity size={18} color="#af90e8"/>,label:'精力',val:p==='ovulation'?'高峰':p==='follicular'?'上升':p==='luteal'?'下降':'低谷',nav:'sleep'},
-            {icon:<Smile size={18} color="#89a8df"/>,label:'情绪',val:p==='ovulation'?'自信':p==='follicular'?'积极':p==='luteal'?'内敛':'放松',nav:'mood'},
-            {icon:<Leaf size={18} color="#84c9b9"/>,label:'身体',val:p==='ovulation'?'轻盈':p==='follicular'?'舒适':p==='luteal'?'略肿':'疲惫',nav:'diet'},
-            {icon:<Moon size={18} color="#b0a8ca"/>,label:'睡眠',val:p==='ovulation'?'好':p==='follicular'?'规律':p==='luteal'?'欠佳':'多睡',nav:'sleep'},
+            {icon:<Activity size={18} color="#af90e8"/>,label:'精力',val:p==='ovulation'?'高峰':p==='follicular'?'回升':p==='luteal'?'下降':'低谷',nav:'exercise'},
+            {icon:<Leaf size={18} color="#84c9b9"/>,label:'身体',val:p==='ovulation'?'轻盈':p==='follicular'?'有力':p==='luteal'?'略肿':'疲惫',nav:'diet'},
+            {icon:<Moon size={18} color="#b0a8ca"/>,label:'睡眠',val:p==='ovulation'?'好':p==='follicular'?'规律':p==='luteal'?'欠佳':'多休',nav:'sleep'},
+            {icon:<Smile size={18} color="#89a8df"/>,label:'情绪',val:p==='ovulation'?'自信':p==='follicular'?'积极':p==='luteal'?'内敛':'内省',nav:'mood'},
           ].map((s,i)=>(
             <div key={i} onClick={()=>goTips(s.nav)} style={{display:'flex',flexDirection:'column',alignItems:'center',flex:1,position:'relative',cursor:'pointer'}}>
               {i!==0&&<div style={{position:'absolute',left:0,top:'50%',transform:'translateY(-50%)',width:1,height:28,background:'rgba(255,255,255,.25)'}}/>}
@@ -88,7 +88,7 @@ export default function HomeScreen({onNav,goTips}:{onNav:(t:Tab)=>void;goTips:(c
 
       {/* 周期阶段总览 — Gemini connecting line */}
       <div style={{margin:'20px 24px 0',position:'relative',paddingBottom:16}}>
-        <div onClick={()=>onNav('tips')} style={{fontSize:11,fontWeight:500,color:'rgba(255,255,255,.75)',marginBottom:12,display:'flex',alignItems:'center',gap:4,cursor:'pointer'}}>
+        <div onClick={()=>onNav('insights')} style={{fontSize:11,fontWeight:500,color:'rgba(255,255,255,.75)',marginBottom:12,display:'flex',alignItems:'center',gap:4,cursor:'pointer'}}>
           周期阶段总览 <ChevronRight size={12}/>
         </div>
         <div style={{position:'relative',padding:'0 8px'}}>

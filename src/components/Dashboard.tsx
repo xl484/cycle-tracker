@@ -17,7 +17,7 @@ export default function Dashboard(){
   const [t,setT]=useState<Tab>('home');
   const [tipCat,setTipCat]=useState<string>('exercise');
 
-  const goTips = (cat?: string) => { setTipCat(cat??'exercise'); setT('tips'); };
+  const goTips = (cat?: string) => { setTipCat(cat??''); setT('tips'); };
 
   return(
     <div className="app">

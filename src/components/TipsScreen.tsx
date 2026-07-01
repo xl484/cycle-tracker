@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useCycleContext } from '../context/CycleContext';
 import { getGuidance } from '../utils/guidanceContent';
-import { Activity, Smile, Moon, Zap, ChevronRight } from 'lucide-react';
+import { Activity, Smile, Moon, Zap, Sparkles, ChevronRight, Droplet, Sun, Wind } from 'lucide-react';
 
-const LUT=14;
-const GUIDE_ICONS=[{c:'#af90e8',icon:Zap},{c:'#8da6f9',icon:Activity},{c:'#8BA8E0',icon:Moon},{c:'#f5bc8c',icon:Smile}];
+
+const GUIDE_ICONS=[{c:'#af90e8',icon:Zap},{c:'#8da6f9',icon:Activity},{c:'#8BA8E0',icon:Moon},{c:'#f5bc8c',icon:Smile},{c:'#f0a0c0',icon:Sparkles}];
 
 export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBack:()=>void}){
   const{phaseInfo,cycleData}=useCycleContext();
-  const[expanded,setExpanded]=useState<string|null>(null);
+  const[expanded,setExpanded]=useState<string|null>(initialCat||null);
   const p=phaseInfo.phase;const cl=cycleData?.cycleLength??28;
   const items=getGuidance(p);
 
@@ -22,10 +22,11 @@ export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBac
   const m=META[p]??META.unknown;
 
   const summaries:Record<string,string>={
-    exercise:p==='menstrual'?'轻柔瑜伽 / 散步':p==='follicular'?'力量训练 / 有氧':p==='ovulation'?'HIIT / 冲刺跑':'快走 / 普拉提',
-    diet:p==='menstrual'?'高蛋白 / 高铁食物':p==='follicular'?'均衡营养 / 蔬果':p==='ovulation'?'补水 / 抗氧化物':'控糖 / 补镁食物',
-    sleep:p==='menstrual'?'早睡 / 热敷助眠':p==='follicular'?'规律作息 / 晒晨光':p==='ovulation'?'7-8h / 减少屏幕':'薰衣草 / 深呼吸',
-    mood:p==='menstrual'?'接纳节奏':p==='follicular'?'积极社交':p==='ovulation'?'自信表达':'减少压力',
+    exercise:p==='menstrual'?'散步 / 温和瑜伽':p==='follicular'?'跑步 / 力量训练':p==='ovulation'?'HIIT / 大重量':'普拉提 / 散步',
+    diet:p==='menstrual'?'补铁 / 温热食物':p==='follicular'?'蛋白 / 发酵食品':p==='ovulation'?'蔬果 / 抗氧化物':'复合碳水 / 补镁',
+    sleep:p==='menstrual'?'早睡 / 热敷助眠':p==='follicular'?'规律作息 / 晨光':p==='ovulation'?'7-8h / 少屏幕':'凉爽卧室 / 薰衣草',
+    mood:p==='menstrual'?'内省 / 降低社交':p==='follicular'?'设定目标 / 社交':p==='ovulation'?'沟通 / 表达自我':'独处 / 减少决策',
+    skincare:p==='menstrual'?'温和保湿 / 修护':p==='follicular'?'VC精华 / 温和刷酸':p==='ovulation'?'保持日常护理':'控油抗痘 / 补锌',
   };
 
   return(
@@ -46,7 +47,9 @@ export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBac
           <div style={{width:48,height:48,borderRadius:'50%',flexShrink:0,
             background:'linear-gradient(135deg,rgba(255,255,255,.6),rgba(200,180,255,.35))',
             boxShadow:'inset -3px -3px 8px rgba(255,255,255,.4),inset 3px 3px 8px rgba(255,255,255,.8),0 8px 16px rgba(120,110,200,.1)',
-            border:'1px solid rgba(255,255,255,.7)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:20,fontWeight:300}}>{m.e}</div>
+            border:'1px solid rgba(255,255,255,.7)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+            {p==='menstrual'?<Droplet size={20} color="#ffa7c4"/>:p==='follicular'?<Sun size={20} color="#c6b4f9"/>:p==='ovulation'?<Activity size={20} color="#af90e8"/>:p==='luteal'?<Wind size={20} color="#f5d09b"/>:<Activity size={20} color="#5a5a75"/>}
+          </div>
           <div>
             <div style={{fontSize:18,fontWeight:700,color:'#5a5a75'}}>{m.l}</div>
             <div style={{fontSize:11,fontWeight:500,color:'#8a8aa8'}}>第 {phaseInfo.dayInCycle||'-'} 天 / 共 {cl} 天</div>
@@ -87,7 +90,7 @@ export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBac
                   <ChevronRight size={14} color="#a0a0b8" style={{transform:isOpen?'rotate(90deg)':'rotate(0)',transition:'transform .3s',flexShrink:0}}/>
                 </div>
                 {isOpen&&<div style={{padding:'0 14px 14px',borderTop:'1px solid rgba(255,255,255,.2)'}}>
-                  <p style={{fontSize:11,color:'#5a5a75',lineHeight:1.7,margin:0,paddingTop:10}}>{g.content}</p>
+                  <p style={{fontSize:11,color:'#5a5a75',lineHeight:1.7,margin:0,paddingTop:10,whiteSpace:'pre-line'}}>{g.content}</p>
                 </div>}
               </div>
             );

@@ -18,7 +18,7 @@ export interface PhaseInfo {
 
 export interface GuidanceItem {
   id: string;
-  category: 'exercise' | 'diet' | 'sleep' | 'mood';
+  category: 'exercise' | 'diet' | 'sleep' | 'mood' | 'skincare';
   icon: string;
   title: string;
   content: string;

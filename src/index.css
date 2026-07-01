@@ -221,9 +221,12 @@ body{
 
 /* ===== 底部导航 ===== */
 .nav{
-  position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:390px;height:79px;
-  background:rgba(255,255,255,.75);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-top:1px solid rgba(255,255,255,.5);display:flex;z-index:20;
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:390px;height:70px;
+  background:rgba(255,255,255,.3);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border-radius:20px 20px 0 0;
+  border:1px solid rgba(255,255,255,.25);border-bottom:none;
+  box-shadow:0 -4px 20px rgba(100,100,150,.04);
+  display:flex;z-index:20;
 }
 .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:none;background:none;cursor:pointer;font-family:inherit;font-size:10px;font-weight:600;color:var(--txt1);opacity:.4;transition:opacity .3s}
 .nav-btn.active{opacity:1;color:var(--pink)}
