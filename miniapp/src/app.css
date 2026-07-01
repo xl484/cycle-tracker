@@ -1,0 +1,5 @@
+page {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", sans-serif;
+  background: linear-gradient(135deg, #C5D1F7, #E1D4F9, #FCDCE2);
+  min-height: 100vh;
+}

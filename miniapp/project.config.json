@@ -1,0 +1,8 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "周期追踪",
+  "description": "基于周期同步法的女性健康助手",
+  "appid": "touristappid",
+  "setting": { "es6": true, "minified": true },
+  "compileType": "miniprogram"
+}

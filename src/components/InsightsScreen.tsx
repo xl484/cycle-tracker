@@ -21,7 +21,9 @@ export default function InsightsScreen({onBack}:{onBack:()=>void}){
   const[selSports,setSelSports]=useState<string[]>([]);const[showAdd,setShowAdd]=useState(false);const[addText,setAddText]=useState('');
   const[customSports,setCustomSports]=useState<{id:string;label:string}[]>([]);const[saved,setSaved]=useState(false);
 
-  const now=new Date();const yr=now.getFullYear();const mo=now.getMonth()+1;
+  const now=new Date();const[yr,setYr]=useState(now.getFullYear());const[mo,setMo]=useState(now.getMonth()+1);
+  const prevMonth=()=>{if(mo===1){setYr(yr-1);setMo(12)}else setMo(mo-1);};
+  const nextMonth=()=>{if(mo===12){setYr(yr+1);setMo(1)}else setMo(mo+1);};
   const cl=cycleData?.cycleLength??28;const pl=cycleData?.periodLength??5;const fl=cl-LUT;
   const ld=cycleData?.lastPeriodDate?new Date(cycleData.lastPeriodDate+'T00:00:00'):new Date(yr,now.getMonth(),now.getDate()-7);
   const fd=new Date(yr,mo-1,1);const sd=fd.getDay();const dim=new Date(yr,mo,0).getDate();
@@ -78,7 +80,9 @@ export default function InsightsScreen({onBack}:{onBack:()=>void}){
       {/* 2. 日历 */}
       <div style={{margin:'0 24px 16px',padding:16,borderRadius:24,...glass}}>
         <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:10}}>
+          <button onClick={prevMonth} style={{border:'none',background:'none',fontSize:18,color:'#a0a0b8',cursor:'pointer',padding:'0 4px'}}>‹</button>
           <span style={{fontSize:14,fontWeight:700,color:'#5a5a75'}}>{yr}年 {mo}月</span>
+          <button onClick={nextMonth} style={{border:'none',background:'none',fontSize:18,color:'#a0a0b8',cursor:'pointer',padding:'0 4px'}}>›</button>
           <div style={{display:'flex',gap:4}}>
             <button onClick={()=>setCorr(corr==='start'?null:'start')} style={{fontSize:9,padding:'3px 8px',borderRadius:8,border:'1px solid rgba(0,0,0,0.06)',background:corr==='start'?'#af90e8':'transparent',color:corr==='start'?'#fff':'#a0a0b8',cursor:'pointer',fontFamily:'inherit'}}>{corr==='start'?'选择中':'校正开始日'}</button>
             <button onClick={()=>setCorr(corr==='end'?null:'end')} style={{fontSize:9,padding:'3px 8px',borderRadius:8,border:'1px solid rgba(0,0,0,0.06)',background:corr==='end'?'#af90e8':'transparent',color:corr==='end'?'#fff':'#a0a0b8',cursor:'pointer',fontFamily:'inherit'}}>{corr==='end'?'选择中':'校正结束日'}</button>
