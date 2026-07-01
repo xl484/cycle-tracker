@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export interface DailyStatus { mood: number; energy: number }
+export interface DailyStatus { mood: number; energy: number; sports?: string[] }
 type StatusMap = Record<string, DailyStatus>;
 
 const KEY = 'daily-status';
