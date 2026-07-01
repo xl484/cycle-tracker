@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useCycleContext } from '../context/CycleContext';
 import { getGuidance } from '../utils/guidanceContent';
-import { Activity, Smile, Briefcase, Zap, ChevronRight } from 'lucide-react';
+import { Activity, Smile, Moon, Zap, ChevronRight } from 'lucide-react';
 
 const LUT=14;
-const GUIDE_ICONS=[{c:'#af90e8',icon:Zap},{c:'#8da6f9',icon:Activity},{c:'#c09de5',icon:Briefcase},{c:'#f5bc8c',icon:Smile}];
+const GUIDE_ICONS=[{c:'#af90e8',icon:Zap},{c:'#8da6f9',icon:Activity},{c:'#8BA8E0',icon:Moon},{c:'#f5bc8c',icon:Smile}];
 
 export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBack:()=>void}){
   const{phaseInfo,cycleData}=useCycleContext();
@@ -23,8 +23,8 @@ export default function TipsScreen({initialCat,onBack}:{initialCat?:string;onBac
 
   const summaries:Record<string,string>={
     exercise:p==='menstrual'?'轻柔瑜伽 / 散步':p==='follicular'?'力量训练 / 有氧':p==='ovulation'?'HIIT / 冲刺跑':'快走 / 普拉提',
-    energy:p==='menstrual'?'能量低谷':p==='follicular'?'逐步上升':p==='ovulation'?'精力高峰':'趋于下降',
     diet:p==='menstrual'?'高蛋白 / 高铁食物':p==='follicular'?'均衡营养 / 蔬果':p==='ovulation'?'补水 / 抗氧化物':'控糖 / 补镁食物',
+    sleep:p==='menstrual'?'早睡 / 热敷助眠':p==='follicular'?'规律作息 / 晒晨光':p==='ovulation'?'7-8h / 减少屏幕':'薰衣草 / 深呼吸',
     mood:p==='menstrual'?'接纳节奏':p==='follicular'?'积极社交':p==='ovulation'?'自信表达':'减少压力',
   };
 

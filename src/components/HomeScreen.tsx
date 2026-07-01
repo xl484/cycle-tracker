@@ -36,15 +36,13 @@ export default function HomeScreen({onNav,goTips}:{onNav:(t:Tab)=>void;goTips:(c
       <div style={{display:'flex',justifyContent:'center',padding:'20px 0 8px',position:'relative'}}>
         <div className="deco deco-1"/><div className="deco deco-2"/><div className="deco deco-3"/>
         <div onClick={()=>onNav('tips')} style={{cursor:'pointer',width:220,height:220,borderRadius:'50%',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:6,
-          background:'linear-gradient(135deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,.08) 50%,rgba(200,180,255,.25) 100%)',
-          boxShadow:'inset -8px -8px 28px rgba(255,255,255,.55),inset 8px 8px 28px rgba(255,255,255,.85),0 20px 44px rgba(120,110,200,.18)',
-          border:'1.5px solid rgba(255,255,255,.75)',backdropFilter:'blur(12px)',transition:'transform .3s'}}>
+          background:'radial-gradient(circle at 35% 35%,rgba(255,255,255,.88) 0%,rgba(235,205,255,.55) 28%,rgba(195,215,255,.45) 65%,rgba(254,215,225,.6) 92%,rgba(255,255,255,.25) 100%)',
+          boxShadow:'0 16px 44px rgba(186,197,244,.35)',transition:'transform .3s'}}>
           <div style={{fontSize:32,fontWeight:700,color:'#fff',textShadow:'0 2px 6px rgba(0,0,0,.06)'}}>{ph.l}</div>
           <div style={{fontSize:13,fontWeight:400,color:'rgba(255,255,255,.85)',letterSpacing:1}}>第 {phaseInfo.dayInCycle||'-'} 天 / 共 {cycleData?.cycleLength??28} 天</div>
           <div style={{marginTop:4,padding:'4px 14px',borderRadius:20,background:'rgba(255,255,255,.25)',border:'1px solid rgba(255,255,255,.45)',color:'#fff',fontSize:11,fontWeight:500,display:'flex',alignItems:'center',gap:4}}>
             查看阶段详情 <ChevronRight size={12}/>
           </div>
-          <div style={{position:'absolute',top:12,right:18,width:36,height:36,borderRadius:'50%',background:'linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.65))',boxShadow:'inset 2px 2px 4px rgba(255,255,255,.8)',border:'1px solid rgba(255,255,255,.45)',animation:'bubble-float 4s ease-in-out infinite'}}/>
         </div>
       </div>
 

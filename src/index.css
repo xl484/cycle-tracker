@@ -37,10 +37,8 @@ body{
 .bubble-wrap{display:flex;justify-content:center;margin:8px 0 0;position:relative}
 .bubble{
   width:190px;height:190px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.1) 50%,rgba(200,180,255,.3) 100%);
-  box-shadow:inset -8px -8px 24px rgba(255,255,255,.6),inset 8px 8px 24px rgba(255,255,255,.9),0 20px 40px rgba(120,110,200,.2);
-  border:1.5px solid rgba(255,255,255,.8);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.88) 0%,rgba(235,205,255,.55) 28%,rgba(195,215,255,.45) 65%,rgba(254,215,225,.6) 92%,rgba(255,255,255,.25) 100%);
+  box-shadow:0 16px 40px rgba(186,197,244,.35);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   animation:bubble-breath 3.5s ease-in-out infinite;
 }
