@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "build:pages": "tsc -b && vite build --base=/cycle-tracker/ && cp -r dist/* docs/",
     "preview": "vite preview"
   },

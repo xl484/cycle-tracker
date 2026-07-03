@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useCycleContext } from '../context/CycleContext';
 import { useDailyStatus } from '../hooks/useDailyStatus';
 import { Smile, Meh, Frown, Activity, PersonStanding, Dumbbell, Leaf, Mountain, Plus, X } from 'lucide-react';
@@ -24,7 +24,7 @@ export default function InsightsScreen({onBack}:{onBack:()=>void}){
   const now=new Date();const[yr,setYr]=useState(now.getFullYear());const[mo,setMo]=useState(now.getMonth()+1);
   const prevMonth=()=>{if(mo===1){setYr(yr-1);setMo(12)}else setMo(mo-1);};
   const nextMonth=()=>{if(mo===12){setYr(yr+1);setMo(1)}else setMo(mo+1);};
-  const cl=cycleData?.cycleLength??28;const pl=cycleData?.periodLength??5;const fl=cl-LUT;
+  const cl=cycleData?.cycleLength??28;const pl=cycleData?.periodLength??5;
   const ld=cycleData?.lastPeriodDate?new Date(cycleData.lastPeriodDate+'T00:00:00'):new Date(yr,now.getMonth(),now.getDate()-7);
   const fd=new Date(yr,mo-1,1);const sd=fd.getDay();const dim=new Date(yr,mo,0).getDate();
   const days:{d:number;ph:string;td:boolean;ds:string}[]=[];
