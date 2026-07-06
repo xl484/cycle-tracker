@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:pages": "tsc -b && vite build --base=/cycle-tracker/ && cp -r dist/* docs/",
+    "build:pages": "vite build --base=/cycle-tracker/ --outDir=docs",
     "preview": "vite preview"
   },
   "dependencies": {
