@@ -8,8 +8,12 @@ function readFromStorage(): CycleData | null {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    if (parsed && parsed.lastPeriodDate && parsed.cycleLength && parsed.periodLength) {
-      return parsed;
+    if (parsed && parsed.lastPeriodDate) {
+      return {
+        lastPeriodDate: parsed.lastPeriodDate,
+        cycleLength: parsed.cycleLength || 28,
+        periodLength: parsed.periodLength || 5,
+      };
     }
     return null;
   } catch {
