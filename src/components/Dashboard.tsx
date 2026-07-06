@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCycleContext } from '../context/CycleContext';
 import HomeScreen from './HomeScreen';
 import TipsScreen from './TipsScreen';
 import InsightsScreen from './InsightsScreen';
@@ -16,12 +17,13 @@ const TABS:{id:Tab;l:string;icon:string}[]=[
 export default function Dashboard(){
   const [t,setT]=useState<Tab>('home');
   const [tipCat,setTipCat]=useState<string>('exercise');
+  const { cycleData } = useCycleContext();
 
   const goTips = (cat?: string) => { setTipCat(cat??''); setT('tips'); };
 
   return(
     <div className="app">
-      {t==='home'&&<HomeScreen onNav={setT} goTips={goTips}/>}
+      {t==='home'&&<HomeScreen key={cycleData?.lastPeriodDate||'0'} onNav={setT} goTips={goTips}/>}
       {t==='tips'&&<TipsScreen initialCat={tipCat} onBack={()=>setT('home')}/>}
       {t==='insights'&&<InsightsScreen onBack={()=>setT('home')}/>}
       {t==='profile'&&<ProfileScreen onBack={()=>setT('home')}/>}
